@@ -60,7 +60,6 @@ class SingleColorHorizontoalItem extends Component {
             ]}
           />
         </View>
-        <View style={SingleHorizontalBarStyle.lineBorder} />
       </View>
     );
   }

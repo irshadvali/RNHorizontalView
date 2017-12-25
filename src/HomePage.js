@@ -12,6 +12,7 @@ import {
 import SingleColorHorizontoalItem from "./SingleColorHorizontoalItem";
 import DataResult from "./utils/DataResult";
 const window = Dimensions.get("window");
+import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
 
 // create a component
 class HomePage extends Component {
@@ -41,31 +42,42 @@ class HomePage extends Component {
     const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
-        <FlatList
-          data={this.state.DataList}
-          numColumns={6}
-          columnWrapperStyle={{ width: window.width }}
-          keyExtractor={(item, index) => index}
-          renderItem={({ item }) => (
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "column",
-                margin: 1
-              }}
-            >
-              <View>
-                <SingleColorHorizontoalItem
-                  mainDivHeight={320}
-                  mainDivWidth={50}
-                  mainDivBackgroundColor={"#e6e6e6"}
-                  childDivHeight={item.number}
-                  text={item.number}
-                />
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center"
+          }}
+        >
+          <FlatList
+            data={this.state.DataList}
+            numColumns={6}
+            contentContainerStyle={{
+              justifyContent: "center",
+              alignContent: "center"
+            }}
+            keyExtractor={(item, index) => index}
+            renderItem={({ item }) => (
+              <View
+                style={{
+                  flexDirection: "column",
+                  margin: 1
+                }}
+              >
+                <View>
+                  <SingleColorHorizontoalItem
+                    mainDivHeight={320}
+                    mainDivWidth={50}
+                    mainDivBackgroundColor={"#e6e6e6"}
+                    childDivHeight={item.number}
+                    text={item.number}
+                  />
+                </View>
               </View>
-            </View>
-          )}
-        />
+            )}
+          />
+          <View style={SingleHorizontalBarStyle.lineBorder} />
+        </View>
       </View>
     );
   }
@@ -74,9 +86,6 @@ class HomePage extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#ffffff",
     paddingTop: 30
   }
