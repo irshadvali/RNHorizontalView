@@ -34,7 +34,8 @@ class SingleColorHorizontoalItem extends Component {
         <View
           style={{
             height: this.props.mainDivHeight,
-            width: this.props.mainDivWidth
+            width: this.props.mainDivWidth,
+            backgroundColor: this.props.mainDivBackgroundColor
           }}
         >
           <Text
@@ -46,7 +47,7 @@ class SingleColorHorizontoalItem extends Component {
               textAlign: "center"
             }}
           >
-            213
+            {this.props.text}
           </Text>
           {/* <Animated.View style={[styles.childDiv,animatedStyle]}></Animated.View> */}
           <View
@@ -72,12 +73,14 @@ SingleColorHorizontoalItem.propTypes = {
   mainDivHeight: PropTypes.number,
   mainDivWidth: PropTypes.number,
   mainDivBackgroundColor: PropTypes.string,
-  childDivHeight: PropTypes.number
+  childDivHeight: PropTypes.number,
+  text: PropTypes.string
 };
 
 SingleColorHorizontoalItem.defaultProps = {
   mainDivHeight: 0,
   mainDivWidth: 0,
   mainDivBackgroundColor: null,
-  childDivHeight: 0
+  childDivHeight: 0,
+  text: 0
 };

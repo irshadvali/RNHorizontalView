@@ -1,14 +1,25 @@
 //import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Animated, Easing } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Easing,
+  FlatList,
+  Dimensions
+} from "react-native";
 import SingleColorHorizontoalItem from "./SingleColorHorizontoalItem";
+import DataResult from "./utils/DataResult";
+const window = Dimensions.get("window");
 
 // create a component
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      divHeight: "0%"
+      divHeight: "0%",
+      DataList: DataResult.DataList
     };
     //  this._listYear = this._listYearMonth.bind();
   }
@@ -30,11 +41,30 @@ class HomePage extends Component {
     const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
-        <SingleColorHorizontoalItem
-          mainDivHeight={320}
-          mainDivWidth={50}
-          mainDivBackgroundColor={"#d00000"}
-          childDivHeight={150}
+        <FlatList
+          data={this.state.DataList}
+          numColumns={6}
+          columnWrapperStyle={{ width: window.width }}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "column",
+                margin: 1
+              }}
+            >
+              <View>
+                <SingleColorHorizontoalItem
+                  mainDivHeight={320}
+                  mainDivWidth={50}
+                  mainDivBackgroundColor={"#e6e6e6"}
+                  childDivHeight={item.number}
+                  text={item.number}
+                />
+              </View>
+            </View>
+          )}
         />
       </View>
     );
