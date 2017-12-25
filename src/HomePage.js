@@ -49,24 +49,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#ffffff",
     paddingTop: 30
-  },
-  lineBorder: {
-    width: "100%",
-    height: 2,
-    backgroundColor: "#d00000"
-  },
-  divMain: {
-    width: 100,
-    height: 320,
-    backgroundColor: "#e6e6e6"
-  },
-  childDiv: {
-    width: 100,
-    backgroundColor: "steelblue",
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0
   }
 });
 
