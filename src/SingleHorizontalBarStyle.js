@@ -25,7 +25,14 @@ const SingleHorizontalBarStyle = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0
-  }
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    marginTop:10
+  },
 });
 
 export default SingleHorizontalBarStyle;

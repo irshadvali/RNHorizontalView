@@ -13,6 +13,7 @@ import SingleColorHorizontoalItem from "./SingleColorHorizontoalItem";
 import DataResult from "./utils/DataResult";
 const window = Dimensions.get("window");
 import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
+import MonthItem from "./MonthItem"
 
 // create a component
 class HomePage extends Component {
@@ -46,7 +47,8 @@ class HomePage extends Component {
           style={{
             alignItems: "center",
             justifyContent: "center",
-            alignContent: "center"
+            alignContent: "center",
+           
           }}
         >
           <FlatList
@@ -77,6 +79,26 @@ class HomePage extends Component {
             )}
           />
           <View style={SingleHorizontalBarStyle.lineBorder} />
+
+          <FlatList
+            data={this.state.DataList}
+            numColumns={6}
+            keyExtractor={(item, index) => index}
+            renderItem={({ item }) => (
+              <View
+                style={{
+                  flexDirection: "column",
+                  margin: 1
+                }}
+              >
+                <View>
+                  <MonthItem
+                    monthText={item.month}
+                  />
+                </View>
+              </View>
+            )}
+          />
         </View>
       </View>
     );
