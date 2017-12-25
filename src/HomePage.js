@@ -14,6 +14,7 @@ import DataResult from "./utils/DataResult";
 const window = Dimensions.get("window");
 import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
 import MonthItem from "./MonthItem"
+import LinearGradient from 'react-native-linear-gradient';
 
 // create a component
 class HomePage extends Component {
@@ -43,11 +44,13 @@ class HomePage extends Component {
     const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
+      <LinearGradient colors={['transparent', 'rgba(0, 0, 0, 0.5)']} style={styles.linearGradient}>
         <View
           style={{
             alignItems: "center",
             justifyContent: "center",
             alignContent: "center",
+            zIndex:0
            
           }}
         >
@@ -100,6 +103,8 @@ class HomePage extends Component {
             )}
           />
         </View>
+        </LinearGradient>
+        
       </View>
     );
   }
@@ -109,8 +114,15 @@ class HomePage extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
-    paddingTop: 30
-  }
+    paddingTop: 30,
+     position: "absolute",
+   
+  },
+  linearGradient: {
+    backgroundColor: "transparent",
+    position: "absolute",
+    zIndex:1
+}
 });
 
 //make this component available to the app
