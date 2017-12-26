@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import SeparateGradientItem from "./SeparateGradientItem";
 import DataResult from "./utils/DataResult";
-const window = Dimensions.get("window");
+const width = Dimensions.get("window").width;
 import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
 import MonthItem from "./MonthItem";
 import LinearGradient from "react-native-linear-gradient";
@@ -49,6 +49,8 @@ class HomePageGradientColor extends Component {
             alignItems: "center",
             justifyContent: "center",
             alignContent: "center",
+            width: width,
+
             zIndex: 0
           }}
         >
@@ -57,6 +59,7 @@ class HomePageGradientColor extends Component {
             numColumns={6}
             contentContainerStyle={{
               justifyContent: "center",
+
               alignContent: "center"
             }}
             keyExtractor={(item, index) => index}
