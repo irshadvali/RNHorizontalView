@@ -6,7 +6,7 @@
 
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import HomePage from "./src/HomePage";
+import HomePageGradientColor from "./src/HomePageGradientColor";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -19,7 +19,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <HomePage />
+        <HomePageGradientColor />
       </View>
     );
   }

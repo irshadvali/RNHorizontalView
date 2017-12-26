@@ -11,7 +11,7 @@ const SingleHorizontalBarStyle = StyleSheet.create({
   lineBorder: {
     width: window.width - 20,
     height: 2,
-    backgroundColor: "#d00000"
+    backgroundColor: "#ffffff"
   },
   divMain: {
     width: 100,
@@ -29,7 +29,7 @@ const SingleHorizontalBarStyle = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#272c35",
     marginTop: 10
   }
 });
