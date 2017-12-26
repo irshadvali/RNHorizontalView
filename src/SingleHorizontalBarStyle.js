@@ -6,8 +6,7 @@ const SingleHorizontalBarStyle = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ffffff",
-    paddingTop: 30
+    backgroundColor: "#272c35"
   },
   lineBorder: {
     width: window.width - 20,
@@ -20,7 +19,7 @@ const SingleHorizontalBarStyle = StyleSheet.create({
     backgroundColor: "#e6e6e6"
   },
   childDiv: {
-    backgroundColor: "steelblue",
+    backgroundColor: "#0ABA71",
     position: "absolute",
     left: 0,
     right: 0,
@@ -31,8 +30,8 @@ const SingleHorizontalBarStyle = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
-    marginTop:10
-  },
+    marginTop: 10
+  }
 });
 
 export default SingleHorizontalBarStyle;

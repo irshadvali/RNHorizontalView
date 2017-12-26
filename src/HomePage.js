@@ -13,8 +13,8 @@ import SingleColorHorizontoalItem from "./SingleColorHorizontoalItem";
 import DataResult from "./utils/DataResult";
 const window = Dimensions.get("window");
 import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
-import MonthItem from "./MonthItem"
-import LinearGradient from 'react-native-linear-gradient';
+import MonthItem from "./MonthItem";
+import LinearGradient from "react-native-linear-gradient";
 
 // create a component
 class HomePage extends Component {
@@ -44,14 +44,12 @@ class HomePage extends Component {
     const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
-      <LinearGradient colors={['transparent', 'rgba(0, 0, 0, 0.5)']} style={styles.linearGradient}>
         <View
           style={{
             alignItems: "center",
             justifyContent: "center",
             alignContent: "center",
-            zIndex:0
-           
+            zIndex: 0
           }}
         >
           <FlatList
@@ -73,7 +71,7 @@ class HomePage extends Component {
                   <SingleColorHorizontoalItem
                     mainDivHeight={320}
                     mainDivWidth={50}
-                    mainDivBackgroundColor={"#e6e6e6"}
+                    mainDivBackgroundColor={"#272c35"}
                     childDivHeight={item.number}
                     text={item.number}
                   />
@@ -95,16 +93,20 @@ class HomePage extends Component {
                 }}
               >
                 <View>
-                  <MonthItem
-                    monthText={item.month}
-                  />
+                  <MonthItem monthText={item.month} />
                 </View>
               </View>
             )}
           />
         </View>
-        </LinearGradient>
-        
+        <LinearGradient
+          // colors={["transparent", "rgba(255, 0, 0, 1.0)", "transparent"]}
+          // colors={['#272c35', '#272c35', '#272c35']}
+          colors={["rgba(39,44,53,0.4)", "rgba(39,44,53,0.0)"]}
+          start={{ x: 0.0, y: 0.25 }}
+          end={{ x: 1.0, y: 1.0 }}
+          style={styles.linearGradient}
+        />
       </View>
     );
   }
@@ -113,16 +115,20 @@ class HomePage extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ffffff",
-    paddingTop: 30,
-     position: "absolute",
-   
+    flex: 1,
+    backgroundColor: "#272c35",
+    position: "absolute"
   },
   linearGradient: {
     backgroundColor: "transparent",
+    width: "100%",
     position: "absolute",
-    zIndex:1
-}
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    height: "100%"
+  }
 });
 
 //make this component available to the app

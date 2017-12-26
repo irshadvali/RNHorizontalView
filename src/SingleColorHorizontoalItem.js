@@ -44,7 +44,8 @@ class SingleColorHorizontoalItem extends Component {
               left: 0,
               right: 0,
               bottom: this.props.childDivHeight,
-              textAlign: "center"
+              textAlign: "center",
+              color: "#fff"
             }}
           >
             {this.props.text}
