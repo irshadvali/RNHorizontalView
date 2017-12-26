@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
-    paddingTop: 30
+    paddingTop: 30,
+    zIndex:100
   },
   lineBorder: {
     width: "100%",

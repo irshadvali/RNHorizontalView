@@ -1,7 +1,8 @@
 //https://hackernoon.com/playing-with-react-native-animations-d065e7e97391
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, Text, StyleSheet, Animated, Easing } from "react-native";
+import { View, Text, StyleSheet, Animated, Easing,Dimensions } from "react-native";
+const window = Dimensions.get("window");
 // create a component
 const DELAY = 100;
 class MultiHorizontalItem extends Component {
@@ -40,11 +41,13 @@ class MultiHorizontalItem extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+ height: window.height,
+ width:window.width,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#ffffff",
-    paddingTop: 30
+    paddingTop: 30,
+    zIndex:100
   },
   lineBorder: {
     width: "100%",
