@@ -15,33 +15,11 @@ const width = Dimensions.get("window").width;
 import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
 import MonthItem from "./MonthItem";
 import LinearGradient from "react-native-linear-gradient";
+import PropTypes from "prop-types";
 
 // create a component
 class HomePageGradientColor extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      divHeight: "0%",
-      DataList: DataResult.DataList
-    };
-    //  this._listYear = this._listYearMonth.bind();
-  }
-
-  componentWillMount() {
-    this.setState({
-      divHeight: "70%"
-    });
-    this.animatedValue = new Animated.Value(0);
-  }
-  componentDidMount() {
-    Animated.timing(this.animatedValue, {
-      toValue: 50,
-      duration: 1000,
-      easing: Easing.bounce
-    }).start();
-  }
   render() {
-    const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
         <View
@@ -55,7 +33,7 @@ class HomePageGradientColor extends Component {
           }}
         >
           <FlatList
-            data={this.state.DataList}
+            data={this.props.dataResult}
             numColumns={6}
             contentContainerStyle={{
               justifyContent: "center",
@@ -86,7 +64,7 @@ class HomePageGradientColor extends Component {
           <View style={SingleHorizontalBarStyle.lineBorder} />
 
           <FlatList
-            data={this.state.DataList}
+            data={this.props.dataResult}
             numColumns={6}
             keyExtractor={(item, index) => index}
             renderItem={({ item }) => (
@@ -129,3 +107,9 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 export default HomePageGradientColor;
+HomePageGradientColor.propTypes = {
+  dataResult: PropTypes.object
+};
+HomePageGradientColor.defaultProps = {
+  dataResult: null
+};
