@@ -1,4 +1,4 @@
-//https://hackernoon.com/playing-with-react-native-animations-d065e7e97391
+//import liraries
 import React, { Component } from "react";
 import {
   View,
@@ -6,59 +6,87 @@ import {
   StyleSheet,
   Animated,
   Easing,
+  FlatList,
   Dimensions
 } from "react-native";
 import StackBarItem from "./StackBarItem";
-const window = Dimensions.get("window");
+import DataResult from "./utils/DataResult";
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
+import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
+import MonthItem from "./MonthItem";
+import PropTypes from "prop-types";
+
 // create a component
-const DELAY = 100;
 class StackBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      absentDiv: 0,
-      excuseDiv: 0,
-      unmarkedDiv: 0,
-      divTopBottom: 0,
-      presentDiv: 0,
-      divMainHeight: 0
+      DataList: DataResult.StackList
     };
-    //  this._listYear = this._listYearMonth.bind();
   }
-
-  componentWillMount() {
-    this.setState({
-      divMainHeight: 320,
-      presentDiv: 40,
-      absentDiv: 100,
-      excuseDiv: 75,
-      unmarkedDiv: 50
-    });
-    this.animatedValue = new Animated.Value(0);
-  }
-
-  componentDidMount() {
-    Animated.timing(this.animatedValue, {
-      toValue: this.state.divMainHeight,
-      duration: 1000,
-      easing: Easing.in
-    }).start();
-  }
-
   render() {
-    const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
-        <View style={{ position: "absolute", bottom: 1 }}>
-          <StackBarItem
-            divMainHeight={this.state.divMainHeight}
-            unmarkedDiv={this.state.unmarkedDiv}
-            absentDiv={this.state.absentDiv}
-            excuseDiv={this.state.excuseDiv}
-            presentDiv={this.state.presentDiv}
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center",
+            width: width,
+
+            zIndex: 0
+          }}
+        >
+          <FlatList
+            data={this.state.DataList}
+            numColumns={7}
+            contentContainerStyle={{}}
+            keyExtractor={(item, index) => index}
+            renderItem={({ item, index }) => (
+              <View
+                style={{
+                  flexDirection: "column",
+                  margin: 1
+                }}
+              >
+                <View>
+                  <StackBarItem
+                    divMainHeight={
+                      item.unmarkPeople +
+                      item.absentPeople +
+                      item.excusePeople +
+                      item.prsentPeople
+                    }
+                    unmarkedDiv={item.unmarkPeople}
+                    absentDiv={item.absentPeople}
+                    excuseDiv={item.excusePeople}
+                    presentDiv={item.prsentPeople}
+                  />
+                </View>
+              </View>
+            )}
+          />
+          <View style={styles.lineBorder} />
+
+          <FlatList
+            data={this.props.dataResult}
+            numColumns={6}
+            keyExtractor={(item, index) => index}
+            renderItem={({ item }) => (
+              <View
+                style={{
+                  flexDirection: "column",
+                  margin: 1
+                }}
+              >
+                <View>
+                  <MonthItem monthText={item.month} />
+                </View>
+              </View>
+            )}
           />
         </View>
-        <View style={styles.lineBorder} />
       </View>
     );
   }
@@ -67,20 +95,19 @@ class StackBar extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    height: window.height,
-    width: window.width,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-
-    backgroundColor: "#ffffff",
-    paddingTop: 30
+    backgroundColor: "#272c35",
+    position: "absolute",
+    bottom: 2
   },
   lineBorder: {
-    width: "100%",
+    width: window.width - 20,
     height: 2,
-    bottom: 0,
-    backgroundColor: "#d00000",
-    position: "absolute"
+    backgroundColor: "#ffffff",
+    position: "absolute",
+    bottom: 0
   }
 });
 

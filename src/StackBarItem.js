@@ -1,6 +1,5 @@
-//https://hackernoon.com/playing-with-react-native-animations-d065e7e97391
+//import liraries
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -9,19 +8,61 @@ import {
   Easing,
   Dimensions
 } from "react-native";
-const window = Dimensions.get("window");
+import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
+import PropTypes from "prop-types";
+import ColorList from "./utils/ColorList";
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 // create a component
-const DELAY = 100;
 class StackBarItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      childDivHeight: "0%",
+      MulliColorListTwo: ColorList.MulliColorListTwo
+    };
+    //  this._listYear = this._listYearMonth.bind();
+  }
+
+  componentWillMount() {
+    this.setState({
+      divHeight: this.props.childDivHeight
+    });
+    this.animatedValue = new Animated.Value(0);
+  }
+  componentDidMount() {
+    Animated.timing(this.animatedValue, {
+      toValue: 50,
+      duration: 1000,
+      easing: Easing.bounce
+    }).start();
+  }
   render() {
+    const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
         <View
           style={[
             styles.mainDivStructure,
-            { height: this.props.divMainHeight }
+            {
+              height: this.props.divMainHeight + 50,
+              width: 50
+            }
           ]}
         >
+          <Text
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              bottom: this.props.divMainHeight,
+              textAlign: "center",
+              color: "#fff",
+              marginBottom: 5
+            }}
+          >
+            {this.props.divMainHeight}
+          </Text>
           <View
             style={[
               styles.unmarkedStructure,
@@ -30,7 +71,8 @@ class StackBarItem extends Component {
                 bottom:
                   this.props.absentDiv +
                   this.props.excuseDiv +
-                  this.props.presentDiv
+                  this.props.presentDiv +
+                  6
               }
             ]}
           />
@@ -39,7 +81,7 @@ class StackBarItem extends Component {
               styles.excuseStructure,
               {
                 height: this.props.excuseDiv,
-                bottom: this.props.absentDiv + this.props.presentDiv
+                bottom: this.props.absentDiv + this.props.presentDiv + 4
               }
             ]}
           />
@@ -49,7 +91,7 @@ class StackBarItem extends Component {
               styles.absentStructure,
               {
                 height: this.props.absentDiv,
-                bottom: +this.props.presentDiv
+                bottom: this.props.presentDiv + 2
               }
             ]}
           />
@@ -61,56 +103,6 @@ class StackBarItem extends Component {
     );
   }
 }
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    width: window.width,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#ffffff",
-    paddingTop: 30,
-    zIndex: 100
-  },
-  lineBorder: {
-    width: "100%",
-    height: 2,
-    backgroundColor: "#d00000"
-  },
-  mainDivStructure: {
-    width: 100,
-    backgroundColor: "#f9f9f9",
-    position: "absolute",
-    bottom: 0
-  },
-  absentStructure: {
-    width: 100,
-    backgroundColor: "#004D40",
-    position: "absolute",
-    left: 0,
-    right: 0
-  },
-  presentStructure: {
-    width: 100,
-    backgroundColor: "#4A148C",
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0
-  },
-  excuseStructure: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    backgroundColor: "#FF8F00"
-  },
-  unmarkedStructure: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    backgroundColor: "#FF5733"
-  }
-});
 
 //make this component available to the app
 export default StackBarItem;
@@ -130,3 +122,52 @@ StackBarItem.defaultProps = {
   excuseDiv: 0,
   presentDiv: 0
 };
+const styles = StyleSheet.create({
+  container: {
+    height: height,
+    width: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#272c35"
+  },
+  lineBorder: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "#d00000"
+  },
+  mainDivStructure: {
+    width: 50,
+    backgroundColor: "#272c35",
+    position: "absolute",
+    bottom: 0
+  },
+  absentStructure: {
+    width: 50,
+    backgroundColor: "#FF6366",
+    position: "absolute",
+    left: 0,
+    right: 0
+  },
+  presentStructure: {
+    width: 50,
+    backgroundColor: "#35C07C",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0
+  },
+  excuseStructure: {
+    width: 50,
+    position: "absolute",
+    left: 0,
+    right: 0,
+    backgroundColor: "#FFC20F"
+  },
+  unmarkedStructure: {
+    width: 50,
+    position: "absolute",
+    left: 0,
+    right: 0,
+    backgroundColor: "#384355"
+  }
+});
