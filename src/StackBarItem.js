@@ -21,22 +21,8 @@ class StackBarItem extends Component {
       childDivHeight: "0%",
       MulliColorListTwo: ColorList.MulliColorListTwo
     };
-    //  this._listYear = this._listYearMonth.bind();
   }
 
-  componentWillMount() {
-    this.setState({
-      divHeight: this.props.childDivHeight
-    });
-    this.animatedValue = new Animated.Value(0);
-  }
-  componentDidMount() {
-    Animated.timing(this.animatedValue, {
-      toValue: 50,
-      duration: 1000,
-      easing: Easing.bounce
-    }).start();
-  }
   render() {
     const animatedStyle = { height: this.animatedValue };
     return (
