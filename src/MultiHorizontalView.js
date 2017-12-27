@@ -20,7 +20,8 @@ class MultiHorizontalView extends Component {
       divMainHeight: 0,
       divMiddleHeight: 0,
       divTopHeight: 0,
-      divTopBottom: 0
+      divTopBottom: 0,
+      divChildBottomHeight: 0
     };
     //  this._listYear = this._listYearMonth.bind();
   }
@@ -28,6 +29,7 @@ class MultiHorizontalView extends Component {
   componentWillMount() {
     this.setState({
       divMainHeight: 320,
+      divChildBottomHeight: 40,
       divBottomHeight: 100,
       divMiddleHeight: 75,
       divTopHeight: 50
@@ -53,6 +55,7 @@ class MultiHorizontalView extends Component {
             divTopHeight={this.state.divTopHeight}
             divBottomHeight={this.state.divBottomHeight}
             divMiddleHeight={this.state.divMiddleHeight}
+            divChildBottomHeight={this.state.divChildBottomHeight}
           />
         </View>
         <View style={styles.lineBorder} />

@@ -22,7 +22,10 @@ class MultiHorizontalItem extends Component {
               styles.topDiv,
               {
                 height: this.props.divTopHeight,
-                bottom: this.props.divBottomHeight + this.props.divMiddleHeight
+                bottom:
+                  this.props.divBottomHeight +
+                  this.props.divMiddleHeight +
+                  this.props.divChildBottomHeight
               }
             ]}
           />
@@ -31,13 +34,26 @@ class MultiHorizontalItem extends Component {
               styles.middleDiv,
               {
                 height: this.props.divMiddleHeight,
-                bottom: this.props.divBottomHeight
+                bottom:
+                  this.props.divBottomHeight + this.props.divChildBottomHeight
               }
             ]}
           />
 
           <View
-            style={[styles.childDiv, { height: this.props.divBottomHeight }]}
+            style={[
+              styles.childDiv,
+              {
+                height: this.props.divBottomHeight,
+                bottom: +this.props.divChildBottomHeight
+              }
+            ]}
+          />
+          <View
+            style={[
+              styles.belowchildDiv,
+              { height: this.props.divChildBottomHeight }
+            ]}
           />
         </View>
       </View>
@@ -69,6 +85,13 @@ const styles = StyleSheet.create({
   childDiv: {
     width: 100,
     backgroundColor: "#004D40",
+    position: "absolute",
+    left: 0,
+    right: 0
+  },
+  belowchildDiv: {
+    width: 100,
+    backgroundColor: "#4A148C",
     position: "absolute",
     left: 0,
     right: 0,
