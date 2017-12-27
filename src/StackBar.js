@@ -34,7 +34,11 @@ class StackBar extends Component {
           <FlatList
             data={this.state.DataList}
             numColumns={7}
-            contentContainerStyle={{}}
+            scrollEnabled={false}
+            contentContainerStyle={{
+              justifyContent: "center",
+              alignContent: "center"
+            }}
             keyExtractor={(item, index) => index}
             renderItem={({ item, index }) => (
               <View
@@ -97,7 +101,7 @@ class StackBar extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    height: height - 52,
+    height: 300,
     width: width,
     alignItems: "center",
     justifyContent: "center",

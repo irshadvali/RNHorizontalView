@@ -110,7 +110,7 @@ StackBarItem.defaultProps = {
 };
 const styles = StyleSheet.create({
   container: {
-    height: height,
+    height: 300,
     width: 50,
     justifyContent: "center",
     alignItems: "center",
