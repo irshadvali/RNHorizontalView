@@ -57,6 +57,7 @@ class StackBar extends Component {
                     absentDiv={item.absentPeople}
                     excuseDiv={item.excusePeople}
                     presentDiv={item.prsentPeople}
+                    itemIndex={index}
                   />
                 </View>
               </View>

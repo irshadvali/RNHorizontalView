@@ -19,7 +19,10 @@ class StackBarItem extends Component {
     super(props);
     this.state = {
       childDivHeight: "0%",
-      MulliColorListTwo: ColorList.MulliColorListTwo
+      PresentColor: ColorList.PresentColor,
+      AbsentColor: ColorList.AbsentColor,
+      ExcuseColor: ColorList.ExcuseColor,
+      UnmarkColor: ColorList.UnmarkColor
     };
   }
 
@@ -59,7 +62,8 @@ class StackBarItem extends Component {
                   this.props.excuseDiv +
                   this.props.presentDiv +
                   6
-              }
+              },
+              { backgroundColor: this.state.UnmarkColor[this.props.itemIndex] }
             ]}
           />
           <View
@@ -68,7 +72,8 @@ class StackBarItem extends Component {
               {
                 height: this.props.excuseDiv,
                 bottom: this.props.absentDiv + this.props.presentDiv + 4
-              }
+              },
+              { backgroundColor: this.state.ExcuseColor[this.props.itemIndex] }
             ]}
           />
 
@@ -78,11 +83,18 @@ class StackBarItem extends Component {
               {
                 height: this.props.absentDiv,
                 bottom: this.props.presentDiv + 2
-              }
+              },
+              { backgroundColor: this.state.AbsentColor[this.props.itemIndex] }
             ]}
           />
           <View
-            style={[styles.presentStructure, { height: this.props.presentDiv }]}
+            style={[
+              styles.presentStructure,
+              {
+                backgroundColor: this.state.PresentColor[this.props.itemIndex]
+              },
+              { height: this.props.presentDiv }
+            ]}
           />
         </View>
       </View>
@@ -98,7 +110,8 @@ StackBarItem.propTypes = {
   unmarkedDiv: PropTypes.number,
   absentDiv: PropTypes.number,
   excuseDiv: PropTypes.number,
-  presentDiv: PropTypes.number
+  presentDiv: PropTypes.number,
+  itemIndex: PropTypes.number
 };
 
 StackBarItem.defaultProps = {
@@ -106,7 +119,8 @@ StackBarItem.defaultProps = {
   unmarkedDiv: 0,
   absentDiv: 0,
   excuseDiv: 0,
-  presentDiv: 0
+  presentDiv: 0,
+  itemIndex: 4
 };
 const styles = StyleSheet.create({
   container: {
@@ -129,14 +143,12 @@ const styles = StyleSheet.create({
   },
   absentStructure: {
     width: 50,
-    backgroundColor: "#FF6366",
     position: "absolute",
     left: 0,
     right: 0
   },
   presentStructure: {
     width: 50,
-    backgroundColor: "#35C07C",
     position: "absolute",
     left: 0,
     right: 0,
@@ -146,14 +158,12 @@ const styles = StyleSheet.create({
     width: 50,
     position: "absolute",
     left: 0,
-    right: 0,
-    backgroundColor: "#FFC20F"
+    right: 0
   },
   unmarkedStructure: {
     width: 50,
     position: "absolute",
     left: 0,
-    right: 0,
-    backgroundColor: "#384355"
+    right: 0
   }
 });
