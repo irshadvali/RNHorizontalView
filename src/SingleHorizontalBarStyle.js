@@ -30,7 +30,8 @@ const SingleHorizontalBarStyle = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#272c35",
-    marginTop: 10
+    marginTop: 10,
+    textAlign: "center"
   }
 });
 

@@ -27,9 +27,7 @@ class StackBar extends Component {
   }
   render() {
     return (
-      <View
-        style={{ flex: 1, flexDirection: "column", backgroundColor: "#272c35" }}
-      >
+      <View style={{ backgroundColor: "#272c35" }}>
         <View style={styles.container}>
           <FlatList
             data={this.state.DataList}
