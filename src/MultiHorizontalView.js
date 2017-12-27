@@ -1,7 +1,15 @@
 //https://hackernoon.com/playing-with-react-native-animations-d065e7e97391
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Animated, Easing } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Easing,
+  Dimensions
+} from "react-native";
 import MultiHorizontalItem from "./MultiHorizontalItem";
+const window = Dimensions.get("window");
 // create a component
 const DELAY = 100;
 class MultiHorizontalView extends Component {
@@ -39,12 +47,14 @@ class MultiHorizontalView extends Component {
     const animatedStyle = { height: this.animatedValue };
     return (
       <View style={styles.container}>
-        <MultiHorizontalItem
-          divMainHeight={this.state.divMainHeight}
-          divTopHeight={this.state.divTopHeight}
-          divBottomHeight={this.state.divBottomHeight}
-          divMiddleHeight={this.state.divMiddleHeight}
-        />
+        <View style={{ position: "absolute", bottom: 1 }}>
+          <MultiHorizontalItem
+            divMainHeight={this.state.divMainHeight}
+            divTopHeight={this.state.divTopHeight}
+            divBottomHeight={this.state.divBottomHeight}
+            divMiddleHeight={this.state.divMiddleHeight}
+          />
+        </View>
         <View style={styles.lineBorder} />
       </View>
     );
@@ -54,17 +64,20 @@ class MultiHorizontalView extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: window.height,
+    width: window.width,
     justifyContent: "center",
     alignItems: "center",
+
     backgroundColor: "#ffffff",
-    paddingTop: 30,
-    zIndex:100
+    paddingTop: 30
   },
   lineBorder: {
     width: "100%",
     height: 2,
-    backgroundColor: "#d00000"
+    bottom: 0,
+    backgroundColor: "#d00000",
+    position: "absolute"
   }
 });
 
