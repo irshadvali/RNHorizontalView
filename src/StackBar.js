@@ -27,17 +27,10 @@ class StackBar extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center",
-            width: width,
-
-            zIndex: 0
-          }}
-        >
+      <View
+        style={{ flex: 1, flexDirection: "column", backgroundColor: "#272c35" }}
+      >
+        <View style={styles.container}>
           <FlatList
             data={this.state.DataList}
             numColumns={7}
@@ -67,11 +60,20 @@ class StackBar extends Component {
               </View>
             )}
           />
-          <View style={styles.lineBorder} />
-
+        </View>
+        <View style={styles.lineBorder} />
+        <View
+          style={{
+            height: 50,
+            width: width,
+            alignItems: "center",
+            justifyContent: "center",
+            alignContent: "center"
+          }}
+        >
           <FlatList
-            data={this.props.dataResult}
-            numColumns={6}
+            data={this.state.DataList}
+            numColumns={7}
             keyExtractor={(item, index) => index}
             renderItem={({ item }) => (
               <View
@@ -95,19 +97,16 @@ class StackBar extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
+    height: height - 52,
+    width: width,
     alignItems: "center",
-    backgroundColor: "#272c35",
-    position: "absolute",
-    bottom: 2
+    justifyContent: "center",
+    alignContent: "center"
   },
   lineBorder: {
     width: window.width - 20,
     height: 2,
-    backgroundColor: "#ffffff",
-    position: "absolute",
-    bottom: 0
+    backgroundColor: "#ffffff"
   }
 });
 
