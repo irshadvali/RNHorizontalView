@@ -12,11 +12,7 @@ class StackView extends Component {
         <View style={styles.subCon}>
           <Text
             style={{
-              flex: 1,
-              color: "#fff",
-              textAlign: "center",
-              justifyContent: "center",
-              alignItems: "center"
+              color: "#fff"
             }}
           >
             {" "}
@@ -34,7 +30,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ccc"
   },
-  subCon: { height: 50, width: "100%", backgroundColor: "#01579B" }
+  subCon: {
+    height: 50,
+    width: "100%",
+    backgroundColor: "#01579B",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
 
 //make this component available to the app
