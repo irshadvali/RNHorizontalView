@@ -22,7 +22,6 @@ class StackBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DataList: DataResult.StackList,
       containerHeight: 180,
       parameterMeasure: 3 // Here Show graph 1 px as 3 px
     };
@@ -34,7 +33,7 @@ class StackBar extends Component {
           style={[styles.container, { height: this.state.containerHeight }]}
         >
           <FlatList
-            data={this.state.DataList}
+            data={this.props.dataResult}
             numColumns={7}
             scrollEnabled={false}
             contentContainerStyle={{
@@ -81,7 +80,7 @@ class StackBar extends Component {
           }}
         >
           <FlatList
-            data={this.state.DataList}
+            data={this.props.dataResult}
             scrollEnabled={false}
             numColumns={7}
             keyExtractor={(item, index) => index}
@@ -121,3 +120,10 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 export default StackBar;
+
+StackBar.propTypes = {
+  dataResult: PropTypes.object
+};
+StackBar.defaultProps = {
+  dataResult: null
+};

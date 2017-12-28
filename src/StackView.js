@@ -3,12 +3,19 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import StackBar from "./StackBar";
 const width = Dimensions.get("window").width;
+import DataResult from "./utils/DataResult";
 // create a component
 class StackView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      DataList: DataResult.StackList
+    };
+  }
   render() {
     return (
       <View style={styles.container}>
-        <StackBar />
+        <StackBar dataResult={this.state.DataList} />
         <View style={styles.subCon}>
           <Text
             style={{
