@@ -8,7 +8,7 @@ import {
   Easing,
   Dimensions
 } from "react-native";
-import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
+import StackBarStyle from "../src/styles/StackBarStyle";
 import PropTypes from "prop-types";
 import ColorList from "./utils/ColorList";
 const width = Dimensions.get("window").width;
@@ -18,7 +18,6 @@ class StackBarItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      childDivHeight: "0%",
       PresentColor: ColorList.PresentColor,
       AbsentColor: ColorList.AbsentColor,
       ExcuseColor: ColorList.ExcuseColor,
@@ -29,10 +28,15 @@ class StackBarItem extends Component {
   render() {
     const animatedStyle = { height: this.animatedValue };
     return (
-      <View style={[styles.container, { height: this.props.containerHeight }]}>
+      <View
+        style={[
+          StackBarStyle.itemContainer,
+          { height: this.props.containerHeight }
+        ]}
+      >
         <View
           style={[
-            styles.mainDivStructure,
+            StackBarStyle.mainDivStructure,
             {
               height:
                 this.props.divMainHeight / this.props.parameterMeasure + 50,
@@ -55,7 +59,7 @@ class StackBarItem extends Component {
           </Text>
           <View
             style={[
-              styles.unmarkedStructure,
+              StackBarStyle.unmarkedStructure,
               {
                 height: this.props.unmarkedDiv / this.props.parameterMeasure,
                 bottom:
@@ -69,7 +73,7 @@ class StackBarItem extends Component {
           />
           <View
             style={[
-              styles.excuseStructure,
+              StackBarStyle.excuseStructure,
               {
                 height: this.props.excuseDiv / this.props.parameterMeasure,
                 bottom:
@@ -83,7 +87,7 @@ class StackBarItem extends Component {
 
           <View
             style={[
-              styles.absentStructure,
+              StackBarStyle.absentStructure,
               {
                 height: this.props.absentDiv / this.props.parameterMeasure,
                 bottom: this.props.presentDiv / this.props.parameterMeasure + 2
@@ -93,7 +97,7 @@ class StackBarItem extends Component {
           />
           <View
             style={[
-              styles.presentStructure,
+              StackBarStyle.presentStructure,
               {
                 backgroundColor: this.state.PresentColor[this.props.itemIndex]
               },
@@ -130,47 +134,3 @@ StackBarItem.defaultProps = {
   containerHeight: 300,
   parameterMeasure: 1
 };
-const styles = StyleSheet.create({
-  container: {
-    width: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#272c35"
-  },
-  lineBorder: {
-    width: "100%",
-    height: 2,
-    backgroundColor: "#d00000"
-  },
-  mainDivStructure: {
-    width: 50,
-    backgroundColor: "#272c35",
-    position: "absolute",
-    bottom: 0
-  },
-  absentStructure: {
-    width: 50,
-    position: "absolute",
-    left: 0,
-    right: 0
-  },
-  presentStructure: {
-    width: 50,
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0
-  },
-  excuseStructure: {
-    width: 50,
-    position: "absolute",
-    left: 0,
-    right: 0
-  },
-  unmarkedStructure: {
-    width: 50,
-    position: "absolute",
-    left: 0,
-    right: 0
-  }
-});

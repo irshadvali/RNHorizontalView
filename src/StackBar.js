@@ -10,10 +10,7 @@ import {
   Dimensions
 } from "react-native";
 import StackBarItem from "./StackBarItem";
-import DataResult from "./utils/DataResult";
-const width = Dimensions.get("window").width;
-const height = Dimensions.get("window").height;
-import SingleHorizontalBarStyle from "./SingleHorizontalBarStyle";
+import StackBarStyle from "./styles/StackBarStyle";
 import MonthItem from "./MonthItem";
 import PropTypes from "prop-types";
 
@@ -28,9 +25,12 @@ class StackBar extends Component {
   }
   render() {
     return (
-      <View style={{ paddingTop: 30, backgroundColor: "#272c35" }}>
+      <View style={StackBarStyle.container}>
         <View
-          style={[styles.container, { height: this.state.containerHeight }]}
+          style={[
+            StackBarStyle.subcontainer,
+            { height: this.state.containerHeight }
+          ]}
         >
           <FlatList
             data={this.props.dataResult}
@@ -69,16 +69,8 @@ class StackBar extends Component {
             )}
           />
         </View>
-        <View style={styles.lineBorder} />
-        <View
-          style={{
-            height: 50,
-            width: width,
-            alignItems: "center",
-            justifyContent: "center",
-            alignContent: "center"
-          }}
-        >
+        <View style={StackBarStyle.lineBorder} />
+        <View style={StackBarStyle.dateContainer}>
           <FlatList
             data={this.props.dataResult}
             scrollEnabled={false}
@@ -103,22 +95,6 @@ class StackBar extends Component {
   }
 }
 
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    width: width,
-    alignItems: "center",
-    justifyContent: "center",
-    alignContent: "center"
-  },
-  lineBorder: {
-    width: window.width - 20,
-    height: 2,
-    backgroundColor: "#ffffff"
-  }
-});
-
-//make this component available to the app
 export default StackBar;
 
 StackBar.propTypes = {
