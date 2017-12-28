@@ -28,35 +28,35 @@ const DataResult = {
   ],
   StackList: [
     {
-      prsentPeople: 30,
+      prsentPeople: 130,
       absentPeople: 70,
       excusePeople: 90,
-      unmarkPeople: 10,
+      unmarkPeople: 110,
       month: "10 FEB"
     },
     {
-      prsentPeople: 80,
+      prsentPeople: 180,
       absentPeople: 40,
-      excusePeople: 10,
+      excusePeople: 110,
       unmarkPeople: 0,
       month: "11 FEB"
     },
     {
       prsentPeople: 80,
-      absentPeople: 80,
+      absentPeople: 180,
       excusePeople: 20,
       unmarkPeople: 15,
       month: "12 FEB"
     },
     {
       prsentPeople: 50,
-      absentPeople: 20,
+      absentPeople: 120,
       excusePeople: 40,
       unmarkPeople: 0,
       month: "TODAY"
     },
     {
-      prsentPeople: 60,
+      prsentPeople: 160,
       absentPeople: 10,
       excusePeople: 50,
       unmarkPeople: 0,
@@ -64,15 +64,15 @@ const DataResult = {
     },
     {
       prsentPeople: 70,
-      absentPeople: 10,
-      excusePeople: 5,
+      absentPeople: 110,
+      excusePeople: 15,
       unmarkPeople: 20,
       month: "15 FEB"
     },
     {
       prsentPeople: 40,
       absentPeople: 80,
-      excusePeople: 10,
+      excusePeople: 110,
       unmarkPeople: 30,
       month: "16 FEB"
     }

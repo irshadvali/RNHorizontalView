@@ -29,12 +29,13 @@ class StackBarItem extends Component {
   render() {
     const animatedStyle = { height: this.animatedValue };
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { height: this.props.containerHeight }]}>
         <View
           style={[
             styles.mainDivStructure,
             {
-              height: this.props.divMainHeight + 50,
+              height:
+                this.props.divMainHeight / this.props.parameterMeasure + 50,
               width: 50
             }
           ]}
@@ -44,7 +45,7 @@ class StackBarItem extends Component {
               position: "absolute",
               left: 0,
               right: 0,
-              bottom: this.props.divMainHeight,
+              bottom: this.props.divMainHeight / this.props.parameterMeasure,
               textAlign: "center",
               color: "#fff",
               marginBottom: 5
@@ -56,11 +57,11 @@ class StackBarItem extends Component {
             style={[
               styles.unmarkedStructure,
               {
-                height: this.props.unmarkedDiv,
+                height: this.props.unmarkedDiv / this.props.parameterMeasure,
                 bottom:
-                  this.props.absentDiv +
-                  this.props.excuseDiv +
-                  this.props.presentDiv +
+                  this.props.absentDiv / this.props.parameterMeasure +
+                  this.props.excuseDiv / this.props.parameterMeasure +
+                  this.props.presentDiv / this.props.parameterMeasure +
                   6
               },
               { backgroundColor: this.state.UnmarkColor[this.props.itemIndex] }
@@ -70,8 +71,11 @@ class StackBarItem extends Component {
             style={[
               styles.excuseStructure,
               {
-                height: this.props.excuseDiv,
-                bottom: this.props.absentDiv + this.props.presentDiv + 4
+                height: this.props.excuseDiv / this.props.parameterMeasure,
+                bottom:
+                  this.props.absentDiv / this.props.parameterMeasure +
+                  this.props.presentDiv / this.props.parameterMeasure +
+                  4
               },
               { backgroundColor: this.state.ExcuseColor[this.props.itemIndex] }
             ]}
@@ -81,8 +85,8 @@ class StackBarItem extends Component {
             style={[
               styles.absentStructure,
               {
-                height: this.props.absentDiv,
-                bottom: this.props.presentDiv + 2
+                height: this.props.absentDiv / this.props.parameterMeasure,
+                bottom: this.props.presentDiv / this.props.parameterMeasure + 2
               },
               { backgroundColor: this.state.AbsentColor[this.props.itemIndex] }
             ]}
@@ -93,7 +97,7 @@ class StackBarItem extends Component {
               {
                 backgroundColor: this.state.PresentColor[this.props.itemIndex]
               },
-              { height: this.props.presentDiv }
+              { height: this.props.presentDiv / this.props.parameterMeasure }
             ]}
           />
         </View>
@@ -111,7 +115,9 @@ StackBarItem.propTypes = {
   absentDiv: PropTypes.number,
   excuseDiv: PropTypes.number,
   presentDiv: PropTypes.number,
-  itemIndex: PropTypes.number
+  itemIndex: PropTypes.number,
+  containerHeight: PropTypes.number,
+  parameterMeasure: PropTypes.number
 };
 
 StackBarItem.defaultProps = {
@@ -120,11 +126,12 @@ StackBarItem.defaultProps = {
   absentDiv: 0,
   excuseDiv: 0,
   presentDiv: 0,
-  itemIndex: 4
+  itemIndex: 4,
+  containerHeight: 300,
+  parameterMeasure: 1
 };
 const styles = StyleSheet.create({
   container: {
-    height: 300,
     width: 50,
     justifyContent: "center",
     alignItems: "center",

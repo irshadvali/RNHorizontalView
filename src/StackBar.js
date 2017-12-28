@@ -22,13 +22,17 @@ class StackBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      DataList: DataResult.StackList
+      DataList: DataResult.StackList,
+      containerHeight: 180,
+      parameterMeasure: 3 // Here Show graph 1 px as 3 px
     };
   }
   render() {
     return (
-      <View style={{ backgroundColor: "#272c35" }}>
-        <View style={styles.container}>
+      <View style={{ paddingTop: 30, backgroundColor: "#272c35" }}>
+        <View
+          style={[styles.container, { height: this.state.containerHeight }]}
+        >
           <FlatList
             data={this.state.DataList}
             numColumns={7}
@@ -58,6 +62,8 @@ class StackBar extends Component {
                     excuseDiv={item.excusePeople}
                     presentDiv={item.prsentPeople}
                     itemIndex={index}
+                    containerHeight={this.state.containerHeight}
+                    parameterMeasure={this.state.parameterMeasure}
                   />
                 </View>
               </View>
@@ -76,6 +82,7 @@ class StackBar extends Component {
         >
           <FlatList
             data={this.state.DataList}
+            scrollEnabled={false}
             numColumns={7}
             keyExtractor={(item, index) => index}
             renderItem={({ item }) => (
@@ -100,7 +107,6 @@ class StackBar extends Component {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    height: 300,
     width: width,
     alignItems: "center",
     justifyContent: "center",
